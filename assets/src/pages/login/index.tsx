@@ -1,19 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import {style} from './styles';
+import { StyleSheet, Text, View, Image, TextInput } from 'react-native';
+import { style } from './styles';
+import Logo from "../../assets/logo.png";
 
 export default function Login() {
-  return (
-    <View style={style.container}>
-      <View style={style.boxTop}>
-        <Text>Top</Text>
-      </View>
-      <View style={style.boxMid}>
-        <Text>Mid</Text>
+    return (
+        <View style={style.container}>
+            <View style={style.boxTop}>
+                <Image source={Logo} />
+                <Text>Bem vindo de Volta!</Text>
+            </View>
+            <View style={style.boxMid}>
+                <Text>Endereço de E-mail</Text>
+                <TextInput />
+            <Text>Senha</Text>
+            <TextInput />
+            </View>
+            <View style={style.boxBotton}>
+            </View>
         </View>
-        <View style={style.boxBotton}>
-          <Text>Botton</Text>
-        </View>
-    </View>  
-  );
+    );
 }
