@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, Fragment, LegacyRef } from "react";
 import { View, Text, TextInput } from 'react-native';
 import { style } from "../../pages/login/styles";
 import { themas } from "../../global/themas";
@@ -18,9 +18,12 @@ type Props = TextInput & {
     OnIconRightPress?: () => void,
 }
 
-export const Input = forwardRef(() => {
+export const Input = forwardRef((Props: Props, forwardRef: LegacyRef<TextInput> | null) => {
+    const {IconLeft, IconRight, IconRightName, IconLeftName, title, OnIconRightPress, OnIconLeftPress,
+        ...rest
+    } = Props
     return(
-    <>
+    <Fragment>
     <Text style={style.titleInput}>ENDEREÇO DE E-MAIL</Text>
     <View style={style.boxInput}>
         <TextInput
@@ -32,6 +35,6 @@ export const Input = forwardRef(() => {
             color={themas.colors.gray}
             />
     </View>
-    </>
+    </ Fragment>
     )
 })
