@@ -3,7 +3,7 @@ import { themas } from "../../global/themas";
 
 export const style = StyleSheet.create({
 
-    boxinput: {
+    boxInput: {
         width: '100%',
         height: 40,
         borderWidth: 1,
@@ -25,5 +25,11 @@ export const style = StyleSheet.create({
         color: themas.colors.gray,
         marginTop: 20,
     },
-
+    Icon: {
+        width:'100%',
+    },
+    
+    Button: {
+        width: '10%'
+    }
 })

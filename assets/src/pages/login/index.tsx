@@ -1,29 +1,32 @@
 import React, { useState } from "react";
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image, TextInput, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
-import { style } from './styles';
+ 
+import {
+    Text, View, Image, TextInput, TouchableOpacity,
+    Alert, ActivityIndicator
+} from "react-native";
+import { style } from "./styles";
 import Logo from "../../assets/logo.png";
-import { MaterialIcons} from '@expo/vector-icons';
-import { themas } from '../../global/themas';
+import { MaterialIcons, Octicons } from '@expo/vector-icons'
+import { themas } from "../../global/themas"
 import { Input } from "../../components/input";
-
+ 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
-
+ 
     async function getLogin() {
         try {
             setLoading(true)
-            if(!email || !password) {
+            if (!email || !password) {
                 return Alert.alert('Atenção', 'Informe os campos obrigatórios!');
             }
-
+ 
             setTimeout(() => {
                 if (email == 'leo@gmail.com' && password == '12345678') {
-                    Alert.alert('Logado com Sucesso!');
-                }else{
-                    Alert.alert('Usuário nao Encontrado!');
+                    Alert.alert('Logado com sucesso!');
+                } else {
+                    Alert.alert('Usuário não encontrado!');
                 }
                 setLoading(false)
             }, 3000)
@@ -31,55 +34,76 @@ export default function Login() {
             console.log(error);
         }
     }
+
     return (
-        <View style={style.container}>
+        < View style={style.container} >
             <View style={style.boxTop}>
                 <Image
                     source={Logo}
                     style={style.logo}
                     resizeMode="contain"
                 />
-                <Text style={style.text}>Bem vindo de Volta!</Text>
+                <Text style={style.text}>Bem vindo de volta!</Text>
             </View>
             <View style={style.boxMid}>
-                <Input />
+                <Input
+                value={email}
+                onChangeText={setEmail}
+                title="ENDEREÇO E-MAIL"
+                IconRight={MaterialIcons}
+                IconRightName="email"
+                />
+                <Input
+                value={password}
+                onChangeText={setPassword}
+                title="SENHA"
+                IconRight={Octicons}
+                onIconRightName={showPassword ? "eye-closed" : "eye"}
+                secureTextEntry={showPassword}
+                onIconLeftPress={() => setShowPassword(!showPassword)}
+                />
                 {/* <Text style={style.titleInput}>ENDEREÇO DE E-MAIL</Text> */}
+ 
                 {/* <View style={style.boxInput}>
                     <TextInput
                         style={style.input}
                         value={email}
                         onChangeText={setEmail}
                     />
-                    <MaterialIcons 
-                    name = "email"
-                    size={20}
-                    color={themas.colors.gray}
+                    <MaterialIcons
+                        name="email"
+                        size={20}
+                        color={themas.colors.gray}
                     />
-                </View> */}
+                </View>
                 <Text style={style.titleInput}>SENHA</Text>
-                <View style={style.boxInput} >
+                <View style={style.boxInput}>
                     <TextInput
                         style={style.input}
                         value={password}
                         onChangeText={setPassword}
                     />
-                    <MaterialIcons 
-                    name="remove-red-eye"
-                    size={20}
-                    color={themas.colors.gray}
+                    <MaterialIcons
+                        name="remove-red-eye"
+                        size={20}
+                        color={themas.colors.gray}
                     />
-                </View>
+                </View> */}
             </View>
             <View style={style.boxBotton}>
-
                 <TouchableOpacity style={style.button} onPress={() => getLogin()}>
                     {
-                        loading ? <ActivityIndicator color={'#ffff'} size={'small'}/> : <Text style={style.textButton}>Entrar</Text>
+                        loading ? <ActivityIndicator color={'#ffff'} size={"small"} /> :
+                            <Text style={style.textButton}>Entrar</Text>
                     }
                 </TouchableOpacity>
             </View>
             <Text style={style.textBotton}>Não tem conta?
-                <Text style={{color: themas.colors.primary}}>Crie Agora!</Text> </Text>
-        </View>
+                <Text style={{ color: themas.colors.primary }}> Crie agora!</Text></Text>
+        </View >
     )
 }
+
+ 
+ 
+ 
