@@ -10,19 +10,24 @@ import { MaterialIcons, Octicons } from '@expo/vector-icons'
 import { themas } from "../../global/themas"
 import { Input } from "../../components/input";
 import { Button } from "../../components/Button";
+import { useNavigation, NavigationProp } from "@react-navigation/native"
 
 export default function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [showPassword, setShowPassword] = useState(true);
     const [loading, setLoading] = useState(false);
-
+    const navigation = useNavigation<NavigationProp<any>>();
     async function getLogin() {
         try {
             setLoading(true)
             if (!email || !password) {
                 return Alert.alert('Atenção', 'Informe os campos obrigatórios!');
             }
+
+            navigation.navigate("BottomRoutes");
+
+            console.log("Logou!!!!!!!!!!!");
 
             setTimeout(() => {
                 if (email == 'leo@gmail.com' && password == '12345678') {
@@ -65,7 +70,7 @@ export default function Login() {
                 />
             </View>
             <View style={style.boxBotton}>
-                <Button text="Entrar" loading={loading} onPress={() => getLogin} />
+                <Button text="Entrar" loading={loading} onPress={() => getLogin()} />
             </View>
             <Text style={style.textBotton}>Não tem conta?
                 <Text style={{ color: themas.colors.primary }}> Crie agora!</Text></Text>
