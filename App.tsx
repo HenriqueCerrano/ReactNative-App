@@ -1,5 +1,5 @@
-import Routes from './assets/src/routes/index.routes';
 import './gesture-handler';
+import Routes from './assets/src/routes/index.routes';
 import { StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native'
 

@@ -5,7 +5,7 @@ import { Text } from "react-native";
 export default function User () {
     return (
         <Text>
-            Olá, Mundo User!
+        Olá, Mundo User!
         </Text>
     )
 }
