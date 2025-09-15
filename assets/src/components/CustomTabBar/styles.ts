@@ -6,6 +6,11 @@ export const style = StyleSheet.create({
         flexDirection: "row",
         height: 80,
         justifyContent: "space-around",
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
     },
     tabItem:{
         flex: 1,
