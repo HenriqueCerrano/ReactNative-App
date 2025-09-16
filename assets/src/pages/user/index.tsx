@@ -1,11 +1,12 @@
 import React from "react";
+import { Text, View } from "react-native";
 
-import { Text } from "react-native";
-
-export default function User () {
+export default function List () {
     return (
+        <View style={{flex: 1, justifyContent: 'center', alignItems: "center"}}>
         <Text>
-        Olá, Mundo User!
+            User
         </Text>
+        </View>
     )
 }
