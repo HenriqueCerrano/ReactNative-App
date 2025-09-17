@@ -25,20 +25,14 @@ export default function Login() {
                 return Alert.alert('Atenção', 'Informe os campos obrigatórios!');
             }
 
-            navigation.reset({ routes: [{name: "BottomRoutes"}] })
+            navigation.reset({ routes: [{ name: "BottomRoutes" }] })
 
             console.log("Logou!!!!!!!!!!!");
 
-            setTimeout(() => {
-                if (email == 'leo@gmail.com' && password == '12345678') {
-                    Alert.alert('Logado com sucesso!');
-                } else {
-                    Alert.alert('Usuário não encontrado!');
-                }
-                setLoading(false)
-            }, 3000)
         } catch (error) {
             console.log(error);
+        } finally {
+            setLoading(false)
         }
     }
     return (
