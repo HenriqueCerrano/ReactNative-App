@@ -13,12 +13,14 @@ export const style = StyleSheet.create({
         paddingHorizontal: 5,
         backgroundColor: themas.colors.lightGray,
         borderColor: themas.colors.lightGray,
+        marginTop: 10,
     },
     input: {
         height: '100%',
         width: '90%',
         borderRadius: 40,
         paddingLeft: 5,
+        
     },
     titleInput: {
         marginLeft: 5,

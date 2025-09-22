@@ -4,7 +4,9 @@ import {style} from "./styles"
 import { Input } from "../../components/input";
 import {MaterialIcons} from '@expo/vector-icons';
 import { FlatList } from "react-native";
-import { Ball } from "../../components/Ball/index"
+import { Ball } from "../../components/Ball/index";
+import { Flag } from "../../components/Flag"
+import { themas } from "../../global/themas";
 
 type PropCard = {
     item: number,
@@ -50,7 +52,7 @@ export default function List() {
                 <Text>{item.description}</Text>
             </View>
             </View>
-            {/* <Flag> */}
+            <Flag capition="Ugrent" color={themas.colors.red} />
         </View>
     </TouchableOpacity>
         )
