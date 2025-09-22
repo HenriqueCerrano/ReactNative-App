@@ -34,4 +34,5 @@ export const style = StyleSheet.create({
     Button: {
         width: '10%'
     }
+    
 })
