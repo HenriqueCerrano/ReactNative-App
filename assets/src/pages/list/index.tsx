@@ -4,6 +4,7 @@ import {style} from "./styles"
 import { Input } from "../../components/input";
 import {MaterialIcons} from '@expo/vector-icons';
 import { FlatList } from "react-native";
+import { Ball } from "../../components/Ball/index"
 
 type PropCard = {
     item: number,
@@ -42,10 +43,12 @@ export default function List() {
         return(
     <TouchableOpacity style={style.card}>
         <View style={style.rowCard}>
-            {/* <Ball /> */}
+        <View style={style.rowCardLeft}>
+            <Ball color="red" />
             <View>
                 <Text>{item.title}</Text>
                 <Text>{item.description}</Text>
+            </View>
             </View>
             {/* <Flag> */}
         </View>
