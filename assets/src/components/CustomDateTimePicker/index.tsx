@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import  DateTimePicker from "@react-native-community/datetimepicker";
 import { Platform, View, Modal } from "react-native";
 import { style } from "./style";
 
 const CustomDateTimePicker = ({type, onDateChance, show, setShow}) => {
     const [date, setDate] = useState(new Date());
+
+    useEffect(() => {
+        if(onDateChance) {
+            onDateChance(date)
+        }
+    }, [date, onDateChance])
 
 const onChance = (event, selectDate) => {
     const currentDate = selectDate || date;
