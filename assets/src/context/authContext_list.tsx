@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useRef, useEffect } from "react";
-import { Dimensions, Text, View, StyleSheet, TouchableOpacity } from "react-native";
+import React, { createContext, useContext, useRef, useEffect, useState } from "react";
+import { Dimensions, Text, View, StyleSheet, TouchableOpacity, KeyboardAvoidingView, Platform } from "react-native";
 import { Modalize } from "react-native-modalize";
 import { MaterialIcons, AntDesign } from "@expo/vector-icons"
 import { Input } from "../components/input";
@@ -16,6 +16,11 @@ const flags = [
 export const AuthProviderList = (props: any): any => {
 
     const modalizeRef = useRef<Modalize>(null);
+    const [title, setTitle] = useState('');
+    const [descripition, setDescription] = useState('');
+    const [selectedFlag, setSelected] = useState('Urgente');
+    const [selectedDate, setSelectedData] = useState (new Date());
+    const [selectedTime, setSelectedTime] = useState(new Date())
     const onOpen = () => {
         modalizeRef?.current?.open();
 
@@ -45,7 +50,7 @@ export const AuthProviderList = (props: any): any => {
 
     const _container = () => {
         return (
-            <View style={styles.container}>
+        <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
                 <View style={styles.header}>
                     <TouchableOpacity onPress = {() => onClose()}>
                         <MaterialIcons
@@ -89,7 +94,8 @@ export const AuthProviderList = (props: any): any => {
                            {_renderFlags()}
                         </View>
                     </View>
-            </View>
+            </KeyboardAvoidingView>
+
         )
     }
     return (
