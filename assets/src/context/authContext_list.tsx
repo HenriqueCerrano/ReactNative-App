@@ -32,11 +32,6 @@ export const AuthProviderList = (props: any): any => {
     const onClose = () => {
         modalizeRef?.current?.close();
     }
-
-    useEffect(() => {
-        onOpen()
-    }, [])
-
     const _renderFlags = () => {
         return (
             flags.map((item, index) => (
@@ -56,6 +51,16 @@ export const AuthProviderList = (props: any): any => {
    const handleTimeChange = (date) =>{
         setSelected(date);
    }
+   const handleSave = () => {
+        const newItem = {
+            item: 0,
+            title: 'Titulo',
+            descripition: 'Descrição',
+            flags: 'Flags',
+            timeLimite: '01.02.2025',
+        }
+        console.log(newItem)
+   }
 
     const _container = () => {
         return (
@@ -70,7 +75,7 @@ export const AuthProviderList = (props: any): any => {
 
                     <Text style={styles.title}>Criar Tarefa</Text>
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => handleSave()}>
                         <AntDesign
                             name="check"
                             size={30}
