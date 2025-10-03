@@ -26,6 +26,9 @@ export const AuthProviderList = (props: any): any => {
     const [showDatePicker, setShowDatePicker] = useState(false);
     const [showTimePicker, setShowTimePicker] = useState(false);
     const [item, setItem] = useState(0);
+    const [taskList, setTaskList] = useState([]);
+
+
     const onOpen = () => {
         modalizeRef?.current?.open();
 
@@ -34,6 +37,10 @@ export const AuthProviderList = (props: any): any => {
     const onClose = () => {
         modalizeRef?.current?.close();
     }
+
+    useEffect(() => {
+        console.log(taskList.length)
+    }, [taskList]);
     const _renderFlags = () => {
         return (
             flags.map((item, index) => (
@@ -78,19 +85,32 @@ export const AuthProviderList = (props: any): any => {
             
         }
         const storageData = await AsyncStorage.getItem('tasklist');
-        console.log(storageData)
+        //console.log(storageData)
         let taskList = storageData ? JSON.parse(storageData) : [];
         taskList.push(newItem);
-        await AsyncStorage.setItem('tasklist', JSON.stringify(newItem))
+        await AsyncStorage.setItem('tasklist', JSON.stringify(taskList))
+
+        setTaskList(taskList)
+        //setData()
+
 
     } catch (error) {
         console.log('Erro ao salvar o item', error)
     }
    }
+   const setData = () => {
+        setTitle('')
+        setDescription('')
+        setSelectedFlag('Urgent')
+        setItem(0)
+        setSelectedDate(new Date())
+        setSelectedTime(new Date())
+   }
 
     const _container = () => {
         return (
             <KeyboardAvoidingView style={styles.container} behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+                
                 <View style={styles.header}>
                     <TouchableOpacity onPress={() => onClose()}>
                         <MaterialIcons
@@ -175,7 +195,7 @@ export const AuthProviderList = (props: any): any => {
         )
     }
     return (
-        <AuthContextList.Provider value={{ onOpen }}>
+        <AuthContextList.Provider value={{ onOpen, taskList }}>
             {props.children}
             <Modalize
                 ref={modalizeRef}
