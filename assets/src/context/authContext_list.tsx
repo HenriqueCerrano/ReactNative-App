@@ -43,8 +43,8 @@ export const AuthProviderList = (props: any): any => {
     }
 
     useEffect(() => {
-        console.log(taskList.length)
-    }, [taskList]);
+        get_taskList()
+    }, []);
 
     const _renderFlags = () => {
         return (
@@ -79,8 +79,8 @@ export const AuthProviderList = (props: any): any => {
                 item: Date.now(),
                 title,
                 description,
-                flags: selectedFlag,
-                timeLimite: new Date(
+                flag: selectedFlag,
+                timeLimit: new Date(
                     selectedDate.getFullYear(),
                     selectedDate.getMonth(),
                     selectedDate.getDate(),

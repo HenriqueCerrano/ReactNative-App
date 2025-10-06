@@ -1,14 +1,14 @@
-interface AuthContextList {
+export interface AuthContextType {
     taskList: Array<PropCard>,
     onOpen: void,
 }
 
-type PropCard = {
-    descripition: string,
+export type PropCard = {
+    description: string,
     flag: PropFlags,
     item: number,
     timeLimit: string,
     title: string,
 }
 
-type PropFlags = 'Urgent' | 'Opicional'
+export type PropFlags = 'Urgent' | 'Opcional'
