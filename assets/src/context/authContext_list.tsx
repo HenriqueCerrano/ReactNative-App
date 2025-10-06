@@ -113,6 +113,16 @@ export const AuthProviderList = (props: any): any => {
         setSelectedTime(new Date())
     }
 
+    async function get_taskList() {
+        try {
+            const storageData = await AsyncStorage.getItem('taskList');
+            const taskList = storageData ? JSON.parse(storageData) : []
+            setTaskList(taskList)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     const _container = () => {
         return (
             <KeyboardAvoidingView
@@ -182,13 +192,13 @@ export const AuthProviderList = (props: any): any => {
                         </TouchableOpacity>
                     </View>
                     <CustomDateTimePicker
-                        onDateChance={handleDateChange}
+                        onDateChange={handleDateChange}
                         setShow={setShowDatePicker}
                         show={showDatePicker}
                         type={'date'}
                     />
                     <CustomDateTimePicker
-                        onDateChance={handleTimeChange}
+                        onDateChange={handleTimeChange}
                         setShow={setShowTimePicker}
                         show={showTimePicker}
                         type={'time'}
