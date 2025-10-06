@@ -3,7 +3,7 @@ import { TouchableOpacity, View, Text } from "react-native";
 import { style } from "./style"
 
 type Props = {
-    capition: string,
+    caption: string,
     color: string,
     selected?: boolean,
 }
@@ -15,7 +15,7 @@ export function Flag({...rest }: Props) {
             { backgroundColor:rest?.color },
             rest?.selected && { borderWidth: 2 }
             ]}>
-            <Text style={{ color: "#FFF"}}>{rest.capition}</Text>
+            <Text style={{ color: "#FFF"}}>{rest.caption}</Text>
         </View>
     )
 }
